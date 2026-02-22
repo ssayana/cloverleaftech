@@ -1,32 +1,11 @@
 // script.js
 
-// Smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
+// Function to display the current date and time in UTC format
+function displayCurrentDateTime() {
+    const now = new Date();  // Create a new date object with the current date and time
+    const utcDateTime = now.toISOString().replace(/T/, ' ').replace(/Z/, '');  // Convert to UTC format
+    console.log(`Current Date and Time (UTC): ${utcDateTime}`);  // Output the UTC date and time
+}
 
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
-});
-
-// Mobile menu toggle
-const menuToggle = document.querySelector('.menu-toggle');
-const navMenu = document.querySelector('.nav-menu');
-
-menuToggle.addEventListener('click', () => {
-    navMenu.classList.toggle('is-active');
-});
-
-// Form handling
-const form = document.querySelector('form');
-
-form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData);
-
-    // You can send data to your server here
-    console.log(data);
-});
+// Calling the function to display the date and time
+displayCurrentDateTime();
