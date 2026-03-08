@@ -1,4 +1,4 @@
-# Cloverleaf Tech
+# Cloverleaf Technology
 
 Welcome to the Cloverleaf Tech professional website project! This repository contains the source code and assets for developing and maintaining the Cloverleaf Tech website.
 
