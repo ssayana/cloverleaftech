@@ -1,32 +1,735 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Cloverleaf Technology Inc.</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cloverleaf Technology Inc. | Premier IT & Consulting Partner</title>
+  <meta name="description"
+    content="Cloverleaf Technology Inc. — Premier IT & Consulting Partner. Innovative IT solutions empowering businesses across the USA with cutting-edge software development, consulting, staffing, and technology services." />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Orbitron:wght@700;900&display=swap"
+    rel="stylesheet" />
+
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Orbitron', 'sans-serif'],
+          },
+          colors: {
+            cyber: {
+              bg: '#050b18',
+              surface: '#0a1628',
+              card: '#0d1f3c',
+              border: '#1e3a5f',
+              cyan: '#00d4ff',
+              'cyan-dim': '#00a8cc',
+              green: '#00ff88',
+              purple: '#7c3aed',
+              'purple-light': '#a78bfa',
+              amber: '#f59e0b',
+            },
+          },
+          backgroundImage: {
+            'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+            'grid-pattern': "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M 60 0 L 0 0 0 60' fill='none' stroke='%231e3a5f' stroke-width='0.5'/%3E%3C/svg%3E\")",
+          },
+          animation: {
+            'glow-pulse': 'glowPulse 2.5s ease-in-out infinite',
+            'float': 'float 6s ease-in-out infinite',
+            'scan-line': 'scanLine 4s linear infinite',
+            'fade-up': 'fadeUp 0.7s ease forwards',
+            'border-glow': 'borderGlow 3s ease-in-out infinite',
+            'text-flicker': 'textFlicker 5s linear infinite',
+          },
+          keyframes: {
+            glowPulse: { '0%,100%': { boxShadow: '0 0 10px #00d4ff55' }, '50%': { boxShadow: '0 0 35px #00d4ffaa, 0 0 60px #00d4ff33' } },
+            float: { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-18px)' } },
+            scanLine: { '0%': { transform: 'translateY(-100%)' }, '100%': { transform: 'translateY(400%)' } },
+            fadeUp: { '0%': { opacity: '0', transform: 'translateY(30px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+            borderGlow: { '0%,100%': { borderColor: '#00d4ff55' }, '50%': { borderColor: '#00d4ffcc' } },
+            textFlicker: { '0%,19%,21%,23%,25%,54%,56%,100%': { opacity: '1' }, '20%,24%,55%': { opacity: '0.4' } },
+          },
+        },
+      },
+    };
+  </script>
 </head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    <section class="hero">
-        <h1>Welcome to Cloverleaf Technology Inc.</h1>
-        <p>Your partner in innovative solutions.</p>
-    </section>
-    <section id="services">
-        <h2>Our Services</h2>
-        <p>Overview of services offered...</p>
-    </section>
-    <footer>
-        <p>&copy; 2026 Cloverleaf Technology Inc. All Rights Reserved.</p>
-    </footer>
-    <script src="script.js"></script>
+
+<body class="bg-cyber-bg text-white font-sans overflow-x-hidden">
+
+  <!-- ======== NAVIGATION ======== -->
+  <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 py-4 px-6 lg:px-16">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#hero" class="flex items-center gap-3 group">
+        <div class="w-9 h-9 relative">
+          <div
+            class="absolute inset-0 bg-cyber-cyan/20 rounded rotate-45 group-hover:bg-cyber-cyan/30 transition-colors">
+          </div>
+          <div
+            class="absolute inset-1 bg-cyber-cyan/40 rounded rotate-45 group-hover:bg-cyber-cyan/60 transition-colors">
+          </div>
+          <span
+            class="absolute inset-0 flex items-center justify-center text-cyber-cyan font-display font-black text-sm">CL</span>
+        </div>
+        <span class="font-display text-lg tracking-wider text-white">CLOVERLEAF <span
+            class="text-cyber-cyan">TECH</span></span>
+      </a>
+
+      <!-- Desktop nav -->
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#services"
+          class="nav-link text-sm text-gray-400 hover:text-cyber-cyan transition-colors tracking-widest uppercase">Services</a>
+        <a href="#about"
+          class="nav-link text-sm text-gray-400 hover:text-cyber-cyan transition-colors tracking-widest uppercase">About</a>
+        <a href="#contact"
+          class="nav-link text-sm text-gray-400 hover:text-cyber-cyan transition-colors tracking-widest uppercase">Contact</a>
+        <a href="#contact"
+          class="cta-btn px-5 py-2 text-sm font-semibold rounded border border-cyber-cyan text-cyber-cyan hover:bg-cyber-cyan hover:text-cyber-bg transition-all duration-300 tracking-widest">Get
+          Started</a>
+      </div>
+
+      <!-- Mobile hamburger -->
+      <button id="hamburger" class="md:hidden flex flex-col gap-1.5 group" aria-label="Open menu">
+        <span class="hamburger-line block w-6 h-0.5 bg-cyber-cyan transition-all"></span>
+        <span class="hamburger-line block w-6 h-0.5 bg-cyber-cyan transition-all"></span>
+        <span class="hamburger-line block w-4 h-0.5 bg-cyber-cyan transition-all group-hover:w-6"></span>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 border-t border-cyber-border px-6">
+      <div class="flex flex-col gap-4 pt-4">
+        <a href="#services"
+          class="mobile-nav-link text-gray-300 hover:text-cyber-cyan transition-colors tracking-wider uppercase text-sm">Services</a>
+        <a href="#about"
+          class="mobile-nav-link text-gray-300 hover:text-cyber-cyan transition-colors tracking-wider uppercase text-sm">About</a>
+        <a href="#contact"
+          class="mobile-nav-link text-gray-300 hover:text-cyber-cyan transition-colors tracking-wider uppercase text-sm">Contact</a>
+        <a href="#contact"
+          class="mobile-nav-link mt-2 text-center px-5 py-2 text-sm font-semibold rounded border border-cyber-cyan text-cyber-cyan hover:bg-cyber-cyan hover:text-cyber-bg transition-all duration-300">Get
+          Started</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ======== HERO ======== -->
+  <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden bg-cyber-bg">
+
+    <!-- Animated canvas background -->
+    <canvas id="hero-canvas" class="absolute inset-0 w-full h-full opacity-70"></canvas>
+
+    <!-- Grid overlay -->
+    <div class="absolute inset-0 bg-grid-pattern opacity-20 pointer-events-none"></div>
+
+    <!-- Scan line effect -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+      <div class="absolute left-0 right-0 h-32 animate-scan-line"
+        style="background: linear-gradient(to bottom, transparent, rgba(0,212,255,0.04), transparent)"></div>
+    </div>
+
+    <!-- Radial glow -->
+    <div
+      class="absolute inset-0 bg-gradient-radial from-cyber-cyan/10 via-transparent to-transparent pointer-events-none">
+    </div>
+
+    <!-- Content -->
+    <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
+
+      <!-- Pill badge -->
+      <div
+        class="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full border border-cyber-cyan/40 bg-cyber-cyan/5 text-cyber-cyan text-xs font-semibold tracking-widest uppercase opacity-0 animate-fade-up"
+        style="animation-delay:0.2s">
+        <span class="w-1.5 h-1.5 rounded-full bg-cyber-green animate-pulse"></span>
+        Premier IT &amp; Consulting Partner
+      </div>
+
+      <!-- Headline -->
+      <h1 class="font-display text-4xl sm:text-5xl lg:text-7xl font-black leading-tight mb-6 opacity-0 animate-fade-up"
+        style="animation-delay:0.4s">
+        <span class="block text-white">POWERING THE</span>
+        <span class="block text-cyber-cyan animate-glow-pulse mt-1" id="hero-title-glow">ENTERPRISE OF TOMORROW</span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="max-w-2xl mx-auto text-gray-400 text-lg sm:text-xl leading-relaxed mb-10 opacity-0 animate-fade-up"
+        style="animation-delay:0.65s">
+        Delivering innovative <span class="text-white font-medium">IT Solutions</span> and expert <span
+          class="text-white font-medium">Consulting Services</span> that empower businesses across the USA — from <span
+          class="text-white font-medium">Application Development</span> to <span class="text-white font-medium">Staffing
+          &amp; Technology</span>.
+      </p>
+
+      <!-- CTA buttons -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 opacity-0 animate-fade-up"
+        style="animation-delay:0.85s">
+        <a href="#services"
+          class="group relative px-8 py-4 font-bold text-cyber-bg bg-cyber-cyan rounded overflow-hidden transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,212,255,0.5)] text-sm tracking-widest uppercase">
+          <span class="relative z-10">Explore Solutions</span>
+          <div class="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors duration-300"></div>
+        </a>
+        <a href="#contact"
+          class="px-8 py-4 font-bold border border-cyber-border text-gray-300 hover:border-cyber-cyan hover:text-cyber-cyan rounded transition-all duration-300 text-sm tracking-widest uppercase">
+          Contact Us
+        </a>
+      </div>
+
+      <!-- Stats strip -->
+      <div class="mt-20 grid grid-cols-3 gap-6 max-w-lg mx-auto opacity-0 animate-fade-up" style="animation-delay:1.1s">
+        <div class="text-center">
+          <div class="text-2xl font-display font-black text-cyber-cyan" data-count="200" data-suffix="+">0</div>
+          <div class="text-xs text-gray-500 mt-1 tracking-wider uppercase">Clients</div>
+        </div>
+        <div class="text-center border-x border-cyber-border">
+          <div class="text-2xl font-display font-black text-cyber-cyan" data-count="6" data-suffix="+">0</div>
+          <div class="text-xs text-gray-500 mt-1 tracking-wider uppercase">Services</div>
+        </div>
+        <div class="text-center">
+          <div class="text-2xl font-display font-black text-cyber-cyan" data-count="50" data-suffix="+">0</div>
+          <div class="text-xs text-gray-500 mt-1 tracking-wider uppercase">Experts</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-60 animate-float">
+      <span class="text-xs text-gray-500 tracking-widest uppercase">Scroll</span>
+      <div class="w-px h-10 bg-gradient-to-b from-cyber-cyan to-transparent"></div>
+    </div>
+  </section>
+
+  <!-- ======== SERVICES ======== -->
+  <section id="services" class="relative py-28 px-6 lg:px-16 bg-cyber-surface overflow-hidden">
+    <!-- Background decoration -->
+    <div class="absolute top-0 right-0 w-96 h-96 rounded-full bg-cyber-cyan/5 blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-cyber-purple/5 blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto">
+      <!-- Section header -->
+      <div class="text-center mb-16 reveal-element">
+        <div
+          class="inline-block px-4 py-1 mb-4 rounded-full border border-cyber-cyan/30 text-cyber-cyan text-xs font-semibold tracking-widest uppercase bg-cyber-cyan/5">
+          What We Offer
+        </div>
+        <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-4">
+          Our <span class="text-cyber-cyan">Core Services</span>
+        </h2>
+        <p class="text-gray-400 max-w-xl mx-auto text-base">
+          Checkout the services being provided across industries, platforms, and businesses — all delivered with
+          efficiency and innovation.
+        </p>
+      </div>
+
+      <!-- Service cards grid (6 real services from cloverleaftech.com) -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+
+        <!-- Application Development (featured) -->
+        <div
+          class="service-card reveal-element group relative p-8 rounded-2xl border border-cyber-cyan/40 bg-cyber-card overflow-hidden transition-all duration-500 hover:border-cyber-cyan hover:shadow-[0_0_60px_rgba(0,212,255,0.15)] animate-border-glow"
+          style="animation-delay:0.05s">
+          <div
+            class="absolute inset-0 bg-gradient-to-br from-cyber-cyan/8 via-cyber-purple/3 to-transparent pointer-events-none rounded-2xl">
+          </div>
+          <div
+            class="absolute top-4 right-4 px-2 py-0.5 text-xs font-bold rounded bg-cyber-cyan text-cyber-bg tracking-wider">
+            CORE</div>
+          <div
+            class="w-14 h-14 mb-6 rounded-xl flex items-center justify-center bg-cyber-cyan/10 border border-cyber-cyan/30 group-hover:bg-cyber-cyan/20 transition-colors duration-300">
+            <svg class="w-7 h-7 text-cyber-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+            </svg>
+          </div>
+          <h3
+            class="font-display text-xl font-bold text-white mb-3 group-hover:text-cyber-cyan transition-colors duration-300">
+            Application Development</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-6">
+            We excel as the foremost firm in software development, consistently delivering efficient and innovative
+            solutions to clients across every platform and industry.
+          </p>
+          <ul class="space-y-2 text-sm text-gray-500">
+            <li class="flex items-center gap-2"><span class="text-cyber-green">✦</span> Custom software engineering</li>
+            <li class="flex items-center gap-2"><span class="text-cyber-green">✦</span> Web &amp; mobile applications
+            </li>
+            <li class="flex items-center gap-2"><span class="text-cyber-green">✦</span> API &amp; systems integration
+            </li>
+          </ul>
+          <div class="mt-8 flex items-center gap-2 text-cyber-cyan text-sm font-semibold group/arrow cursor-pointer">
+            <span>Learn more</span><span
+              class="transition-transform group-hover/arrow:translate-x-2 duration-300">→</span>
+          </div>
+        </div>
+
+        <!-- Maintenance Support -->
+        <div
+          class="service-card reveal-element group relative p-8 rounded-2xl border border-cyber-border bg-cyber-card overflow-hidden transition-all duration-500 hover:border-cyber-green/60 hover:shadow-[0_0_40px_rgba(0,255,136,0.08)]"
+          style="animation-delay:0.1s">
+          <div
+            class="absolute inset-0 bg-gradient-to-br from-cyber-green/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl">
+          </div>
+          <div
+            class="w-14 h-14 mb-6 rounded-xl flex items-center justify-center bg-cyber-green/10 border border-cyber-green/30 group-hover:bg-cyber-green/20 transition-colors duration-300">
+            <svg class="w-7 h-7 text-cyber-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          </div>
+          <h3
+            class="font-display text-xl font-bold text-white mb-3 group-hover:text-cyber-green transition-colors duration-300">
+            Maintenance Support</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-6">
+            A top company in software development that has partnered with leading enterprises, delivering
+            mission-critical solutions and support services globally.
+          </p>
+          <ul class="space-y-2 text-sm text-gray-500">
+            <li class="flex items-center gap-2"><span class="text-cyber-green">✦</span> 24/7 system monitoring</li>
+            <li class="flex items-center gap-2"><span class="text-cyber-green">✦</span> Bug fixes &amp; updates</li>
+            <li class="flex items-center gap-2"><span class="text-cyber-green">✦</span> Performance optimization</li>
+          </ul>
+          <div class="mt-8 flex items-center gap-2 text-cyber-green text-sm font-semibold group/arrow cursor-pointer">
+            <span>Learn more</span><span
+              class="transition-transform group-hover/arrow:translate-x-2 duration-300">→</span>
+          </div>
+        </div>
+
+        <!-- Consulting -->
+        <div
+          class="service-card reveal-element group relative p-8 rounded-2xl border border-cyber-border bg-cyber-card overflow-hidden transition-all duration-500 hover:border-cyber-purple/60 hover:shadow-[0_0_40px_rgba(124,58,237,0.1)]"
+          style="animation-delay:0.15s">
+          <div
+            class="absolute inset-0 bg-gradient-to-br from-cyber-purple/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl">
+          </div>
+          <div
+            class="w-14 h-14 mb-6 rounded-xl flex items-center justify-center bg-cyber-purple/20 border border-cyber-purple/40 group-hover:bg-cyber-purple/30 transition-colors duration-300">
+            <svg class="w-7 h-7 text-cyber-purple-light" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            </svg>
+          </div>
+          <h3
+            class="font-display text-xl font-bold text-white mb-3 group-hover:text-cyber-purple-light transition-colors duration-300">
+            Consulting</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-6">
+            Our IT consulting services propel process and technology-driven change to achieve significant, measurable
+            business results for organizations of every size.
+          </p>
+          <ul class="space-y-2 text-sm text-gray-500">
+            <li class="flex items-center gap-2"><span class="text-cyber-green">✦</span> Digital transformation strategy
+            </li>
+            <li class="flex items-center gap-2"><span class="text-cyber-green">✦</span> Process re-engineering</li>
+            <li class="flex items-center gap-2"><span class="text-cyber-green">✦</span> Technology roadmapping</li>
+          </ul>
+          <div
+            class="mt-8 flex items-center gap-2 text-cyber-purple-light text-sm font-semibold group/arrow cursor-pointer">
+            <span>Learn more</span><span
+              class="transition-transform group-hover/arrow:translate-x-2 duration-300">→</span>
+          </div>
+        </div>
+
+        <!-- Quality Testing -->
+        <div
+          class="service-card reveal-element group relative p-8 rounded-2xl border border-cyber-border bg-cyber-card overflow-hidden transition-all duration-500 hover:border-cyber-cyan/60 hover:shadow-[0_0_40px_rgba(0,212,255,0.08)]"
+          style="animation-delay:0.2s">
+          <div
+            class="absolute inset-0 bg-gradient-to-br from-cyber-cyan/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl">
+          </div>
+          <div
+            class="w-14 h-14 mb-6 rounded-xl flex items-center justify-center bg-cyber-cyan/10 border border-cyber-cyan/30 group-hover:bg-cyber-cyan/20 transition-colors duration-300">
+            <svg class="w-7 h-7 text-cyber-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3
+            class="font-display text-xl font-bold text-white mb-3 group-hover:text-cyber-cyan transition-colors duration-300">
+            Quality Testing</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-6">
+            Quality testing services focused on software deployment preparedness, ensuring exceptional quality standards
+            and improved performance across every release.
+          </p>
+          <ul class="space-y-2 text-sm text-gray-500">
+            <li class="flex items-center gap-2"><span class="text-cyber-green">✦</span> Automated &amp; manual QA</li>
+            <li class="flex items-center gap-2"><span class="text-cyber-green">✦</span> Performance &amp; load testing
+            </li>
+            <li class="flex items-center gap-2"><span class="text-cyber-green">✦</span> Security vulnerability testing
+            </li>
+          </ul>
+          <div class="mt-8 flex items-center gap-2 text-cyber-cyan text-sm font-semibold group/arrow cursor-pointer">
+            <span>Learn more</span><span
+              class="transition-transform group-hover/arrow:translate-x-2 duration-300">→</span>
+          </div>
+        </div>
+
+        <!-- Staffing -->
+        <div
+          class="service-card reveal-element group relative p-8 rounded-2xl border border-cyber-border bg-cyber-card overflow-hidden transition-all duration-500 hover:border-cyber-amber/60 hover:shadow-[0_0_40px_rgba(245,158,11,0.08)]"
+          style="animation-delay:0.25s">
+          <div
+            class="absolute inset-0 bg-gradient-to-br from-cyber-amber/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl">
+          </div>
+          <div
+            class="w-14 h-14 mb-6 rounded-xl flex items-center justify-center bg-cyber-amber/10 border border-cyber-amber/30 group-hover:bg-cyber-amber/20 transition-colors duration-300">
+            <svg class="w-7 h-7 text-cyber-amber" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          </div>
+          <h3
+            class="font-display text-xl font-bold text-white mb-3 group-hover:text-cyber-amber transition-colors duration-300">
+            Staffing</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-6">
+            We provide comprehensive staffing solutions to companies worldwide, ensuring skilled IT personnel are placed
+            across the globe to meet your business needs.
+          </p>
+          <ul class="space-y-2 text-sm text-gray-500">
+            <li class="flex items-center gap-2"><span class="text-cyber-green">✦</span> Contract &amp; permanent
+              placement</li>
+            <li class="flex items-center gap-2"><span class="text-cyber-green">✦</span> Global talent sourcing</li>
+            <li class="flex items-center gap-2"><span class="text-cyber-green">✦</span> IT workforce augmentation</li>
+          </ul>
+          <div class="mt-8 flex items-center gap-2 text-cyber-amber text-sm font-semibold group/arrow cursor-pointer">
+            <span>Learn more</span><span
+              class="transition-transform group-hover/arrow:translate-x-2 duration-300">→</span>
+          </div>
+        </div>
+
+        <!-- Technology -->
+        <div
+          class="service-card reveal-element group relative p-8 rounded-2xl border border-cyber-border bg-cyber-card overflow-hidden transition-all duration-500 hover:border-cyber-green/60 hover:shadow-[0_0_40px_rgba(0,255,136,0.08)]"
+          style="animation-delay:0.3s">
+          <div
+            class="absolute inset-0 bg-gradient-to-br from-cyber-green/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl">
+          </div>
+          <div
+            class="w-14 h-14 mb-6 rounded-xl flex items-center justify-center bg-cyber-green/10 border border-cyber-green/30 group-hover:bg-cyber-green/20 transition-colors duration-300">
+            <svg class="w-7 h-7 text-cyber-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2h-2M12 3v4" />
+            </svg>
+          </div>
+          <h3
+            class="font-display text-xl font-bold text-white mb-3 group-hover:text-cyber-green transition-colors duration-300">
+            Technology</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-6">
+            Advanced technology solutions, training, and support in every technology across all aspects — keeping your
+            teams sharp and your systems future-ready.
+          </p>
+          <ul class="space-y-2 text-sm text-gray-500">
+            <li class="flex items-center gap-2"><span class="text-cyber-green">✦</span> Cloud &amp; infrastructure
+              solutions</li>
+            <li class="flex items-center gap-2"><span class="text-cyber-green">✦</span> Technical training programs</li>
+            <li class="flex items-center gap-2"><span class="text-cyber-green">✦</span> Emerging tech advisory</li>
+          </ul>
+          <div class="mt-8 flex items-center gap-2 text-cyber-green text-sm font-semibold group/arrow cursor-pointer">
+            <span>Learn more</span><span
+              class="transition-transform group-hover/arrow:translate-x-2 duration-300">→</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== ABOUT ======== -->
+  <section id="about" class="relative py-28 px-6 lg:px-16 bg-cyber-bg overflow-hidden">
+    <!-- Decorations -->
+    <div class="absolute top-20 left-0 w-72 h-72 rounded-full bg-cyber-purple/8 blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-10 right-10 w-96 h-96 rounded-full bg-cyber-cyan/5 blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+        <!-- Left: text -->
+        <div class="reveal-element">
+          <div
+            class="inline-block px-4 py-1 mb-4 rounded-full border border-cyber-purple/40 text-cyber-purple-light text-xs font-semibold tracking-widest uppercase bg-cyber-purple/10">
+            Who We Are
+          </div>
+          <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-6 leading-tight">
+            Built to Deliver <span class="text-cyber-cyan">Unparalleled Value</span> Worldwide
+          </h2>
+          <p class="text-gray-400 leading-relaxed mb-5">
+            Cloverleaf Technology Inc. is a premier IT &amp; consulting partner empowering businesses across the USA
+            with innovative solutions. We partner with enterprises of all sizes to deliver software development,
+            consulting, staffing, and technology services that create real results.
+          </p>
+          <p class="text-gray-400 leading-relaxed mb-8">
+            <span class="text-white font-medium">Our Vision:</span> To be at the forefront of IT solutions and services
+            and deliver unparalleled value to our esteemed clients worldwide. <span class="text-white font-medium">Our
+              Mission:</span> To deliver innovative IT solutions and services that provide exceptional value, helping
+            clients achieve their goals.
+          </p>
+
+          <!-- Values -->
+          <div class="grid grid-cols-2 gap-4 mb-8">
+            <div
+              class="p-4 rounded-xl border border-cyber-border bg-cyber-card hover:border-cyber-cyan/40 transition-colors duration-300">
+              <div class="text-cyber-cyan text-xl mb-1">⚡</div>
+              <div class="text-white font-semibold text-sm mb-1">Innovative Solutions</div>
+              <div class="text-gray-500 text-xs leading-relaxed">Efficient, cutting-edge technology built for every
+                client</div>
+            </div>
+            <div
+              class="p-4 rounded-xl border border-cyber-border bg-cyber-card hover:border-cyber-cyan/40 transition-colors duration-300">
+              <div class="text-cyber-green text-xl mb-1">🌎</div>
+              <div class="text-white font-semibold text-sm mb-1">USA-Wide Reach</div>
+              <div class="text-gray-500 text-xs leading-relaxed">Empowering businesses across the country and beyond
+              </div>
+            </div>
+            <div
+              class="p-4 rounded-xl border border-cyber-border bg-cyber-card hover:border-cyber-cyan/40 transition-colors duration-300">
+              <div class="text-cyber-purple-light text-xl mb-1">🤝</div>
+              <div class="text-white font-semibold text-sm mb-1">Trusted Partner</div>
+              <div class="text-gray-500 text-xs leading-relaxed">Long-term relationships built on results and integrity
+              </div>
+            </div>
+            <div
+              class="p-4 rounded-xl border border-cyber-border bg-cyber-card hover:border-cyber-cyan/40 transition-colors duration-300">
+              <div class="text-cyber-amber text-xl mb-1">🎯</div>
+              <div class="text-white font-semibold text-sm mb-1">Exceptional Value</div>
+              <div class="text-gray-500 text-xs leading-relaxed">Helping clients achieve their goals with measurable
+                impact</div>
+            </div>
+          </div>
+
+          <a href="#contact"
+            class="inline-flex items-center gap-2 px-6 py-3 font-bold text-cyber-bg bg-cyber-cyan rounded hover:shadow-[0_0_25px_rgba(0,212,255,0.4)] transition-all duration-300 text-sm tracking-wider">
+            Work With Us <span>→</span>
+          </a>
+        </div>
+
+        <!-- Right: visual -->
+        <div class="reveal-element flex justify-center">
+          <div class="relative w-full max-w-md">
+            <!-- Outer glow ring -->
+            <div class="absolute inset-0 rounded-3xl bg-cyber-cyan/5 blur-2xl animate-float"></div>
+
+            <!-- Main card -->
+            <div class="relative rounded-3xl border border-cyber-border bg-cyber-card p-8 overflow-hidden">
+              <!-- Scan lines overlay -->
+              <div class="absolute inset-0 opacity-5 pointer-events-none"
+                style="background: repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,212,255,0.1) 2px,rgba(0,212,255,0.1) 4px)">
+              </div>
+
+              <!-- Top bar -->
+              <div class="flex items-center gap-2 mb-6 pb-4 border-b border-cyber-border">
+                <div class="w-3 h-3 rounded-full bg-red-500/70"></div>
+                <div class="w-3 h-3 rounded-full bg-cyber-amber/70"></div>
+                <div class="w-3 h-3 rounded-full bg-cyber-green/70"></div>
+                <span class="ml-3 text-xs text-gray-600 font-mono">cloverleaf_dashboard.exe</span>
+              </div>
+
+              <!-- Terminal-style content -->
+              <div class="font-mono text-xs space-y-2">
+                <div><span class="text-cyber-cyan">$</span><span class="text-gray-500"> status --check</span></div>
+                <div class="text-cyber-green ml-2">✓ All systems operational</div>
+                <div class="mt-3"><span class="text-cyber-cyan">$</span><span class="text-gray-500"> services
+                    --list</span></div>
+                <div class="text-white ml-2">6 core service offerings active</div>
+                <div class="mt-3"><span class="text-cyber-cyan">$</span><span class="text-gray-500"> phone --get</span>
+                </div>
+                <div class="text-cyber-green ml-2">+1 (470) 310-3190</div>
+                <div class="mt-3"><span class="text-cyber-cyan">$</span><span class="text-gray-500"> email --get</span>
+                </div>
+                <div class="text-gray-400 ml-2">info@cloverleaftech.com</div>
+                <div class="mt-3"><span class="text-cyber-cyan">$</span><span class="text-gray-500"> region
+                    --coverage</span></div>
+                <div class="text-cyber-purple-light ml-2">USA-wide · Global staffing</div>
+                <div class="mt-4 flex items-center gap-2">
+                  <span class="text-cyber-cyan">$</span>
+                  <span class="text-white" id="typing-cursor">_</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Floating badges -->
+            <div
+              class="absolute -top-4 -right-4 px-3 py-1.5 rounded-lg border border-cyber-cyan/40 bg-cyber-bg text-cyber-cyan text-xs font-bold animate-float"
+              style="animation-delay:1s">
+              IT Consulting ✓
+            </div>
+            <div
+              class="absolute -bottom-4 -left-4 px-3 py-1.5 rounded-lg border border-cyber-green/40 bg-cyber-bg text-cyber-green text-xs font-bold animate-float"
+              style="animation-delay:2s">
+              USA Nationwide ✓
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== CONTACT ======== -->
+  <section id="contact" class="relative py-28 px-6 lg:px-16 bg-cyber-surface overflow-hidden">
+    <div
+      class="absolute top-0 left-1/2 -translate-x-1/2 w-px h-24 bg-gradient-to-b from-transparent to-cyber-cyan/30 pointer-events-none">
+    </div>
+    <div class="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none"></div>
+    <div class="absolute top-20 right-0 w-80 h-80 rounded-full bg-cyber-cyan/5 blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-4xl mx-auto">
+      <!-- Section header -->
+      <div class="text-center mb-14 reveal-element">
+        <div
+          class="inline-block px-4 py-1 mb-4 rounded-full border border-cyber-cyan/30 text-cyber-cyan text-xs font-semibold tracking-widest uppercase bg-cyber-cyan/5">
+          Get In Touch
+        </div>
+        <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-4">
+          Let's Build Something <span class="text-cyber-cyan">Extraordinary</span>
+        </h2>
+        <p class="text-gray-400 max-w-xl mx-auto">
+          Ready to transform your enterprise? Our team of experts is standing by. Fill out the form and we'll respond
+          within 24 hours.
+        </p>
+      </div>
+
+      <!-- Contact card -->
+      <div
+        class="reveal-element relative rounded-2xl border border-cyber-border bg-cyber-card p-8 lg:p-12 overflow-hidden">
+        <div
+          class="absolute inset-0 bg-gradient-to-br from-cyber-cyan/5 to-transparent pointer-events-none rounded-2xl">
+        </div>
+
+        <form id="contact-form" class="relative grid md:grid-cols-2 gap-6" novalidate>
+
+          <!-- Name -->
+          <div class="form-group">
+            <label for="name" class="block text-xs text-gray-400 font-semibold tracking-wider uppercase mb-2">Full
+              Name</label>
+            <input id="name" name="name" type="text" placeholder="John Smith" required
+              class="form-input w-full px-4 py-3 rounded-lg bg-cyber-bg border border-cyber-border text-white placeholder-gray-600 text-sm focus:outline-none focus:border-cyber-cyan transition-colors duration-300" />
+            <span class="form-error text-red-400 text-xs mt-1 hidden">Please enter your name</span>
+          </div>
+
+          <!-- Email -->
+          <div class="form-group">
+            <label for="email" class="block text-xs text-gray-400 font-semibold tracking-wider uppercase mb-2">Work
+              Email</label>
+            <input id="email" name="email" type="email" placeholder="john@company.com" required
+              class="form-input w-full px-4 py-3 rounded-lg bg-cyber-bg border border-cyber-border text-white placeholder-gray-600 text-sm focus:outline-none focus:border-cyber-cyan transition-colors duration-300" />
+            <span class="form-error text-red-400 text-xs mt-1 hidden">Please enter a valid email</span>
+          </div>
+
+          <!-- Company -->
+          <div class="form-group">
+            <label for="company"
+              class="block text-xs text-gray-400 font-semibold tracking-wider uppercase mb-2">Company</label>
+            <input id="company" name="company" type="text" placeholder="Acme Corporation"
+              class="form-input w-full px-4 py-3 rounded-lg bg-cyber-bg border border-cyber-border text-white placeholder-gray-600 text-sm focus:outline-none focus:border-cyber-cyan transition-colors duration-300" />
+          </div>
+
+          <!-- Service interest -->
+          <div class="form-group">
+            <label for="service" class="block text-xs text-gray-400 font-semibold tracking-wider uppercase mb-2">Area of
+              Interest</label>
+            <select id="service" name="service"
+              class="form-input w-full px-4 py-3 rounded-lg bg-cyber-bg border border-cyber-border text-gray-400 text-sm focus:outline-none focus:border-cyber-cyan transition-colors duration-300 appearance-none cursor-pointer">
+              <option value="" class="bg-cyber-bg">Select a service...</option>
+              <option value="cloud" class="bg-cyber-bg text-white">Cloud Strategy</option>
+              <option value="ai" class="bg-cyber-bg text-white">AI Integration</option>
+              <option value="fintech" class="bg-cyber-bg text-white">Fintech Solutions</option>
+              <option value="all" class="bg-cyber-bg text-white">Multiple Services</option>
+            </select>
+          </div>
+
+          <!-- Message -->
+          <div class="form-group md:col-span-2">
+            <label for="message"
+              class="block text-xs text-gray-400 font-semibold tracking-wider uppercase mb-2">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Tell us about your project and goals..."
+              required
+              class="form-input w-full px-4 py-3 rounded-lg bg-cyber-bg border border-cyber-border text-white placeholder-gray-600 text-sm focus:outline-none focus:border-cyber-cyan transition-colors duration-300 resize-none"></textarea>
+            <span class="form-error text-red-400 text-xs mt-1 hidden">Please enter a message</span>
+          </div>
+
+          <!-- Submit -->
+          <div class="md:col-span-2 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+            <button id="submit-btn" type="submit"
+              class="group relative px-8 py-4 font-bold text-cyber-bg bg-cyber-cyan rounded overflow-hidden transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,212,255,0.5)] text-sm tracking-widest uppercase">
+              <span id="btn-text" class="relative z-10 flex items-center gap-2">
+                Send Message
+                <svg class="w-4 h-4 transition-transform group-hover:translate-x-1 duration-300" fill="none"
+                  stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </span>
+              <div class="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors duration-300"></div>
+            </button>
+            <p class="text-gray-600 text-xs">We respond within 24 business hours. No spam, ever.</p>
+          </div>
+
+          <!-- Success message -->
+          <div id="success-msg"
+            class="md:col-span-2 hidden p-4 rounded-lg border border-cyber-green/40 bg-cyber-green/10 text-cyber-green text-sm font-medium flex items-center gap-3">
+            <span class="text-lg">✓</span>
+            <span>Message received! We'll be in touch within 24 hours.</span>
+          </div>
+
+        </form>
+      </div>
+
+      <!-- Contact info strip -->
+      <div class="reveal-element mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
+        <div
+          class="p-4 rounded-xl border border-cyber-border hover:border-cyber-cyan/30 transition-colors duration-300">
+          <div class="text-cyber-cyan text-xl mb-2">📍</div>
+          <div class="text-white text-sm font-semibold mb-1">Headquarters</div>
+          <div class="text-gray-500 text-xs">United States of America</div>
+        </div>
+        <div
+          class="p-4 rounded-xl border border-cyber-border hover:border-cyber-cyan/30 transition-colors duration-300">
+          <div class="text-cyber-cyan text-xl mb-2">✉️</div>
+          <div class="text-white text-sm font-semibold mb-1">Email Us</div>
+          <div class="text-gray-500 text-xs">info@cloverleaftech.com</div>
+        </div>
+        <div
+          class="p-4 rounded-xl border border-cyber-border hover:border-cyber-cyan/30 transition-colors duration-300">
+          <div class="text-cyber-cyan text-xl mb-2">📞</div>
+          <div class="text-white text-sm font-semibold mb-1">Call Us</div>
+          <div class="text-gray-500 text-xs">+1 (470) 310-3190</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== FOOTER ======== -->
+  <footer class="relative bg-cyber-bg border-t border-cyber-border py-10 px-6 lg:px-16">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-7 h-7 relative">
+          <div class="absolute inset-0 bg-cyber-cyan/20 rounded rotate-45"></div>
+          <div class="absolute inset-0.5 bg-cyber-cyan/40 rounded rotate-45"></div>
+          <span
+            class="absolute inset-0 flex items-center justify-center text-cyber-cyan font-display font-black text-xs">CL</span>
+        </div>
+        <span class="font-display text-sm tracking-wider text-gray-400">CLOVERLEAF TECHNOLOGY INC.</span>
+      </div>
+      <p class="text-xs text-gray-600">© 2026 Cloverleaf Technology Inc. All rights reserved.</p>
+      <div class="flex items-center gap-4 text-xs text-gray-600">
+        <a href="#" class="hover:text-cyber-cyan transition-colors">Privacy</a>
+        <a href="#" class="hover:text-cyber-cyan transition-colors">Terms</a>
+        <a href="#" class="hover:text-cyber-cyan transition-colors">Security</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
+
 </html>

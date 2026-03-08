@@ -1,52 +1,151 @@
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
+/* =============================================
+   Cloverleaf Technology — Custom Styles
+   Supplements Tailwind CSS
+   ============================================= */
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #050b18; }
+::-webkit-scrollbar-thumb { background: #1e3a5f; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #00d4ff55; }
+
+/* ── Custom selection ── */
+::selection { background: rgba(0,212,255,0.25); color: #fff; }
+
+/* ── Smooth scrolling ── */
+html { scroll-behavior: smooth; }
+
+/* ── Navbar scroll state ── */
+#navbar.scrolled {
+  background: rgba(5, 11, 24, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(30, 58, 95, 0.7);
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
 }
 
-.header {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 0;
-    text-align: center;
+/* ── Hero canvas ── */
+#hero-canvas {
+  display: block;
 }
 
-.nav {
-    margin: 20px 0;
+/* ── Reveal animation ── */
+.reveal-element {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-element.revealed {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.nav a {
-    margin: 0 15px;
-    color: #4CAF50;
-    text-decoration: none;
+/* ── Service card hover glow ── */
+.service-card {
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+}
+.service-card:hover {
+  transform: translateY(-6px);
 }
 
-.footer {
-    background-color: #f2f2f2;
-    text-align: center;
-    padding: 10px 0;
-    position: relative;
-    bottom: 0;
-    width: 100%;
+/* ── Form input focus glow ── */
+.form-input:focus {
+  box-shadow: 0 0 0 2px rgba(0,212,255,0.15), 0 0 20px rgba(0,212,255,0.08);
 }
 
-.button {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    transition-duration: 0.4s;
+/* ── Mobile menu transition ── */
+#mobile-menu {
+  animation: slideDown 0.25s ease;
+}
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-.button:hover {
-    background-color: white;
-    color: #4CAF50;
-    border: 2px solid #4CAF50;
+/* ── Hamburger open state ── */
+#hamburger.open .hamburger-line:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+#hamburger.open .hamburger-line:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+#hamburger.open .hamburger-line:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+  width: 1.5rem;
+}
+
+/* ── Typing cursor blink ── */
+#typing-cursor {
+  display: inline-block;
+  animation: blink 1s step-end infinite;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* ── Counter suffix ── */
+[data-count]::after {
+  content: attr(data-suffix);
+}
+
+/* ── Hero title text glow ── */
+#hero-title-glow {
+  text-shadow: 0 0 30px rgba(0, 212, 255, 0.4), 0 0 60px rgba(0, 212, 255, 0.15);
+}
+
+/* ── CTA button shimmer ── */
+@keyframes shimmer {
+  0%   { transform: translateX(-100%) skewX(-15deg); }
+  100% { transform: translateX(300%) skewX(-15deg); }
+}
+.cta-btn::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  transform: translateX(-100%) skewX(-15deg);
+  border-radius: inherit;
+  pointer-events: none;
+}
+.cta-btn:hover::after {
+  animation: shimmer 0.6s ease;
+}
+.cta-btn { position: relative; overflow: hidden; }
+
+/* ── Particle canvas depth ── */
+#hero-canvas { pointer-events: none; }
+
+/* ── Section transitions ── */
+section { isolation: isolate; }
+
+/* ── Select arrow for service dropdown ── */
+#service {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2300d4ff'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1rem;
+  padding-right: 2.5rem;
+}
+
+/* ── Form submit loading state ── */
+#submit-btn.loading {
+  opacity: 0.7;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+/* ── Success message show ── */
+#success-msg.show {
+  display: flex;
+  animation: fadeUp 0.5s ease forwards;
+}
+
+/* ── Responsive utility ── */
+@media (max-width: 640px) {
+  .font-display { letter-spacing: -0.01em; }
 }
