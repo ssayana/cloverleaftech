@@ -1,9 +1,9 @@
 # Cloverleaf Technology
 
-Welcome to the Cloverleaf Tech professional website project! This repository contains the source code and assets for developing and maintaining the Cloverleaf Tech website.
+Welcome to the Cloverleaf Technology professional website project! This repository contains the source code and assets for developing and maintaining the Cloverleaf Technology website.
 
 ## Project Overview
-Cloverleaf Tech is dedicated to providing innovative technology solutions that empower businesses to achieve efficiency and growth. This website serves as both a portfolio and an information hub for our services.
+Cloverleaf Technology is dedicated to providing innovative technology solutions that empower businesses to achieve efficiency and growth. This website serves as both a portfolio and an information hub for our services.
 
 ## Features
 - **Responsive Design:** The website is fully responsive, ensuring a great experience on all devices.
