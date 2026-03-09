@@ -268,10 +268,11 @@
             <li class="flex items-center gap-2"><span class="text-cyber-green">✦</span> API &amp; systems integration
             </li>
           </ul>
-          <div class="mt-8 flex items-center gap-2 text-cyber-cyan text-sm font-semibold group/arrow cursor-pointer">
+          <button data-modal="app-dev"
+            class="learn-more-btn mt-8 flex items-center gap-2 text-cyber-cyan text-sm font-semibold group/arrow hover:gap-3 transition-all duration-300">
             <span>Learn more</span><span
               class="transition-transform group-hover/arrow:translate-x-2 duration-300">→</span>
-          </div>
+          </button>
         </div>
 
         <!-- Maintenance Support -->
@@ -302,10 +303,11 @@
             <li class="flex items-center gap-2"><span class="text-cyber-green">✦</span> Bug fixes &amp; updates</li>
             <li class="flex items-center gap-2"><span class="text-cyber-green">✦</span> Performance optimization</li>
           </ul>
-          <div class="mt-8 flex items-center gap-2 text-cyber-green text-sm font-semibold group/arrow cursor-pointer">
+          <button data-modal="maintenance"
+            class="learn-more-btn mt-8 flex items-center gap-2 text-cyber-green text-sm font-semibold group/arrow hover:gap-3 transition-all duration-300">
             <span>Learn more</span><span
               class="transition-transform group-hover/arrow:translate-x-2 duration-300">→</span>
-          </div>
+          </button>
         </div>
 
         <!-- Consulting -->
@@ -335,11 +337,11 @@
             <li class="flex items-center gap-2"><span class="text-cyber-green">✦</span> Process re-engineering</li>
             <li class="flex items-center gap-2"><span class="text-cyber-green">✦</span> Technology roadmapping</li>
           </ul>
-          <div
-            class="mt-8 flex items-center gap-2 text-cyber-purple-light text-sm font-semibold group/arrow cursor-pointer">
+          <button data-modal="consulting"
+            class="learn-more-btn mt-8 flex items-center gap-2 text-cyber-purple-light text-sm font-semibold group/arrow hover:gap-3 transition-all duration-300">
             <span>Learn more</span><span
               class="transition-transform group-hover/arrow:translate-x-2 duration-300">→</span>
-          </div>
+          </button>
         </div>
 
         <!-- Quality Testing -->
@@ -370,10 +372,11 @@
             <li class="flex items-center gap-2"><span class="text-cyber-green">✦</span> Security vulnerability testing
             </li>
           </ul>
-          <div class="mt-8 flex items-center gap-2 text-cyber-cyan text-sm font-semibold group/arrow cursor-pointer">
+          <button data-modal="quality"
+            class="learn-more-btn mt-8 flex items-center gap-2 text-cyber-cyan text-sm font-semibold group/arrow hover:gap-3 transition-all duration-300">
             <span>Learn more</span><span
               class="transition-transform group-hover/arrow:translate-x-2 duration-300">→</span>
-          </div>
+          </button>
         </div>
 
         <!-- Staffing -->
@@ -403,10 +406,11 @@
             <li class="flex items-center gap-2"><span class="text-cyber-green">✦</span> Global talent sourcing</li>
             <li class="flex items-center gap-2"><span class="text-cyber-green">✦</span> IT workforce augmentation</li>
           </ul>
-          <div class="mt-8 flex items-center gap-2 text-cyber-amber text-sm font-semibold group/arrow cursor-pointer">
+          <button data-modal="staffing"
+            class="learn-more-btn mt-8 flex items-center gap-2 text-cyber-amber text-sm font-semibold group/arrow hover:gap-3 transition-all duration-300">
             <span>Learn more</span><span
               class="transition-transform group-hover/arrow:translate-x-2 duration-300">→</span>
-          </div>
+          </button>
         </div>
 
         <!-- Technology -->
@@ -436,10 +440,11 @@
             <li class="flex items-center gap-2"><span class="text-cyber-green">✦</span> Technical training programs</li>
             <li class="flex items-center gap-2"><span class="text-cyber-green">✦</span> Emerging tech advisory</li>
           </ul>
-          <div class="mt-8 flex items-center gap-2 text-cyber-green text-sm font-semibold group/arrow cursor-pointer">
+          <button data-modal="technology"
+            class="learn-more-btn mt-8 flex items-center gap-2 text-cyber-green text-sm font-semibold group/arrow hover:gap-3 transition-all duration-300">
             <span>Learn more</span><span
               class="transition-transform group-hover/arrow:translate-x-2 duration-300">→</span>
-          </div>
+          </button>
         </div>
 
       </div>
@@ -729,7 +734,126 @@
     </div>
   </footer>
 
+  <!-- ======== SERVICE MODALS ======== -->
+  <div id="modal-overlay" class="fixed inset-0 z-[100] flex items-end sm:items-center justify-center p-4 hidden"
+    aria-modal="true" role="dialog">
+    <!-- Backdrop -->
+    <div id="modal-backdrop"
+      class="absolute inset-0 bg-black/70 backdrop-blur-sm opacity-0 transition-opacity duration-300"></div>
+
+    <!-- Modal panel -->
+    <div id="modal-panel"
+      class="relative w-full max-w-2xl max-h-[85vh] overflow-y-auto rounded-2xl border border-cyber-border bg-cyber-card shadow-[0_0_80px_rgba(0,212,255,0.1)] translate-y-8 opacity-0 transition-all duration-300 ease-out">
+
+      <!-- Close button -->
+      <button id="modal-close"
+        class="absolute top-4 right-4 z-10 w-8 h-8 flex items-center justify-center rounded-full border border-cyber-border text-gray-400 hover:border-cyber-cyan hover:text-cyber-cyan transition-all duration-200"
+        aria-label="Close">✕</button>
+
+      <!-- Modal content (populated by JS) -->
+      <div id="modal-content" class="p-8 lg:p-10"></div>
+    </div>
+  </div>
+
+  <!-- Modal data templates (hidden) -->
+  <script type="application/json" id="modal-data">
+  {
+    "app-dev": {
+      "icon": "M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4",
+      "color": "cyan",
+      "badge": "CORE",
+      "title": "Application Development",
+      "description": "Cloverleaf specializes in custom application solutions tailored to each client's unique needs. Our expert developers utilize cutting-edge technologies and agile methodologies to deliver robust, scalable, and secure applications. From consultation to deployment, we ensure projects are completed on time and within budget, offering mobile, web, and enterprise software solutions.",
+      "features": [
+        { "name": "Customization", "desc": "Solutions that seamlessly integrate with your operations." },
+        { "name": "Scalability",   "desc": "Applications built for future growth." },
+        { "name": "Security",      "desc": "Advanced measures to safeguard sensitive data." },
+        { "name": "Efficiency",    "desc": "Streamlined processes and intuitive interfaces." },
+        { "name": "Support",       "desc": "Ongoing maintenance and support services." },
+        { "name": "Innovation",    "desc": "Using latest technologies to gain competitive advantage." }
+      ]
+    },
+    "maintenance": {
+      "icon": "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065zM15 12a3 3 0 11-6 0 3 3 0 016 0z",
+      "color": "green",
+      "title": "Maintenance & Support",
+      "description": "At Cloverleaf, we provide comprehensive maintenance and support services to keep your applications and systems running smoothly. Our expert team proactively monitors your technology infrastructure, ensuring regular updates, quick issue resolution, and minimal downtime. Tailored support packages guarantee that your needs are met, delivering reliable and uninterrupted performance.",
+      "features": [
+        { "name": "Proactive Monitoring", "desc": "We continuously monitor your systems to prevent issues before they arise." },
+        { "name": "Timely Updates",       "desc": "Regular updates keep your software current and secure." },
+        { "name": "Rapid Resolution",     "desc": "Our quick response times address and resolve issues promptly." },
+        { "name": "Minimized Downtime",   "desc": "Ensuring seamless operations with minimal interruptions." },
+        { "name": "Tailored Packages",    "desc": "Support plans customized to match your specific requirements." },
+        { "name": "Expert Assistance",    "desc": "Access to our skilled professionals for all your maintenance needs." }
+      ]
+    },
+    "consulting": {
+      "icon": "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z",
+      "color": "purple",
+      "title": "Consulting",
+      "description": "Cloverleaf's consulting services are designed to guide businesses through the complexities of technology adoption and digital transformation. Our seasoned consultants provide strategic insights and solutions, ensuring your technology initiatives align with your business goals. We specialize in IT strategy, process optimization, and technology implementation, driving innovation and operational excellence.",
+      "features": [
+        { "name": "Strategic Guidance",        "desc": "Align your technology initiatives with your business objectives confidently." },
+        { "name": "Process Optimization",      "desc": "Enhance efficiency and streamline operations." },
+        { "name": "Technology Implementation", "desc": "Receive expert support for seamless technology adoption." },
+        { "name": "Innovation",                "desc": "Leverage cutting-edge advancements to stay competitive." },
+        { "name": "Risk Management",           "desc": "Identify and mitigate potential risks effectively." },
+        { "name": "Expert Insights",           "desc": "Benefit from the deep expertise of our experienced consultants." }
+      ],
+      "stats": [
+        { "value": "2.6x", "label": "Average Growth" },
+        { "value": "98%",  "label": "Customer Satisfaction" },
+        { "value": "1K+",  "label": "Projects Completed" },
+        { "value": "10K+", "label": "Hirings Done" }
+      ]
+    },
+    "quality": {
+      "icon": "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z",
+      "color": "cyan",
+      "title": "Quality Testing",
+      "description": "Quality testing is fundamental to our service offerings. Our dedicated testing team employs a comprehensive approach, conducting functionality, performance, security, usability, and compatibility testing. We ensure a reliable user experience, optimized performance, and compliance with industry standards. Early issue detection reduces post-release costs and enables iterative development.",
+      "features": [
+        { "name": "Reliability",            "desc": "Deliver high-quality software with minimal issues." },
+        { "name": "Performance",            "desc": "Optimize applications for efficient functionality." },
+        { "name": "User Satisfaction",      "desc": "Enhance user experience and satisfaction." },
+        { "name": "Compliance",             "desc": "Meet industry standards and regulatory requirements." },
+        { "name": "Cost Savings",           "desc": "Reduce post-release fixes and maintenance costs." },
+        { "name": "Continuous Improvement", "desc": "Feedback-driven cycles for constant improvement." }
+      ]
+    },
+    "staffing": {
+      "icon": "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z",
+      "color": "amber",
+      "title": "Staffing & Recruitment",
+      "description": "Cloverleaf provides tailored staffing solutions to find the right talent for your business. With a vast network of skilled professionals and a thorough screening process, we ensure the best match for each position. Temporary, contract and permanent staffing options are available, along with talent acquisition and ongoing support.",
+      "features": [
+        { "name": "Access to Talent", "desc": "Access a wide range of talented candidates with diverse skills." },
+        { "name": "Efficiency",       "desc": "Fill positions quickly, reducing downtime and productivity loss." },
+        { "name": "Flexibility",      "desc": "Scale up or down based on evolving business demands." },
+        { "name": "Cost-Effective",   "desc": "Efficient recruitment process to reduce hiring costs." },
+        { "name": "Quality",          "desc": "Thorough screening process to surface top-quality candidates." },
+        { "name": "Support",          "desc": "Smooth onboarding and integration support for new hires." }
+      ]
+    },
+    "technology": {
+      "icon": "M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2h-2M12 3v4",
+      "color": "green",
+      "title": "IT Courses & Training",
+      "description": "Cloverleaf offers comprehensive IT training courses covering programming languages, software development, cybersecurity, data analytics, and more. Delivered by industry experts, our in-person and online formats provide flexibility to suit different schedules. We also offer customized programs to meet organizational needs.",
+      "features": [
+        { "name": "Skill Development",  "desc": "Gain knowledge and practical skills on current technologies." },
+        { "name": "Flexibility",        "desc": "Choose in-person or online learning based on your preferences." },
+        { "name": "Career Advancement", "desc": "Open new opportunities for professional growth." },
+        { "name": "Certification",      "desc": "Earn recognized certifications to validate your expertise." },
+        { "name": "Industry Relevance", "desc": "Stay up-to-date with current industry demands." },
+        { "name": "Networking",         "desc": "Connect with industry professionals and peers." }
+      ]
+    }
+  }
+  </script>
+
   <script src="script.js"></script>
+
 </body>
 
 </html>
